@@ -1,0 +1,1 @@
+tell application "Finder" to get application file id "com.apple.iWork.Pages"

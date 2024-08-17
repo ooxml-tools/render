@@ -1,0 +1,4 @@
+- https://github.com/googleapis/google-api-nodejs-client/blob/main/samples/docs/
+- https://developers.google.com/drive/api/reference/rest/v2/files/insert
+- https://developers.google.com/drive/api/reference/rest/v2/files/export
+- https://www.npmjs.com/package/onedrive-api#itemsuploadsimple
