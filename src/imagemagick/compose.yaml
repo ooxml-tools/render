@@ -1,6 +1,0 @@
-services:
-  convert:
-    build:
-      dockerfile: ./Dockerfile
-    volumes:
-      - ../../../docx-files:/volumes/output

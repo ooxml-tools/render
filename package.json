@@ -9,7 +9,13 @@
     "ooxml-render": "./dist/npm/bin/ooxml-render.js"
   },
   "scripts": {
-    "lint": "npx prettier . --check"
+    "lint": "npx prettier . --check",
+    "build": "npm run build:npm",
+    "build:npm": "rollup -c rollup.config.ts --configPlugin typescript"
+  },
+  "exports": {
+    ".": "./dist/npm/index.js",
+    "./command": "./dist/npm/command.js"
   },
   "files": [
     "./dist/npm",
@@ -26,6 +32,7 @@
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-typescript-paths": "^1.5.0",
+    "tslib": "^2.6.3",
     "tsx": "^4.16.2"
   },
   "engines": {
@@ -33,9 +40,10 @@
   },
   "dependencies": {
     "@google-cloud/local-auth": "^3.0.1",
+    "execa": "^9.3.0",
     "googleapis": "^142.0.0",
     "open": "^10.1.0",
-    "yargs": "^17.7.2",
-    "execa": "^9.3.0"
+    "tempfile": "^5.0.0",
+    "yargs": "^17.7.2"
   }
 }

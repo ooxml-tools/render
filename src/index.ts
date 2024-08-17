@@ -48,6 +48,7 @@ export async function render(
 
   for (const app of apps) {
     if (!defaultApps.includes(app)) {
+      console.log({defaultApps, app, apps})
       throw new Error(`${app} not supported`);
     }
   }
