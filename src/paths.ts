@@ -9,14 +9,7 @@ export function getOutputPath(filePath: string, app: App) {
   }
 
   return resolve(
-    join(
-      process.cwd(),
-      `/docx-files/`,
-      filename,
-      platform,
-      app,
-      `output.pdf`,
-    ),
+    join(process.cwd(), `/docx-files/`, filename, platform, app, `output.pdf`),
   );
 }
 

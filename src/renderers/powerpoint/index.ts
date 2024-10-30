@@ -1,4 +1,3 @@
-import { join } from "path";
 import { $ } from "execa";
 import { isOsaScriptSupported } from "../../helper";
 import { Format } from "src/renderers";
@@ -13,7 +12,7 @@ on run argv
 	set input_file to (POSIX file (item 1 of argv))
 	set output_file to (POSIX file (item 2 of argv))
 	
-	tell application "Microsoft Word"
+	tell application "Microsoft Powerpoint"
         open input_file
 		
 		set activeDoc to active document
@@ -25,9 +24,9 @@ end run
 }
 
 export async function isSupported(format: Format) {
-  if (format === "docx") {
+  if (format === "pptx") {
     if (await isOsaScriptSupported()) {
-      const appleScript = `tell application "Finder" to get application file id "com.microsoft.Word"`;
+      const appleScript = `tell application "Finder" to get application file id "com.microsoft.Powerpoint"`;
       try {
         await $`osascript -e ${appleScript}`;
         return true;

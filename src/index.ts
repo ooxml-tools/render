@@ -31,7 +31,7 @@ export async function generatePreview(dirpath: string) {
 }
 
 type ReporterArg =
-  | { type: "rendering"; inputPath: string, outputPath: string; app: App }
+  | { type: "rendering"; inputPath: string; outputPath: string; app: App }
   | { type: "flattening"; path: string; app: App }
   | { type: "generating"; path: string; app: App }
   | { type: "writing"; path: string; apps: App[] };
@@ -39,8 +39,8 @@ type ReporterFn = (data: ReporterArg) => void;
 
 export async function render(
   docxpath: string,
-  apps: App[],
   reportFn: ReporterFn,
+  apps: App[],
 ) {
   const defaultApps = await getSupportedApps();
 
@@ -48,7 +48,7 @@ export async function render(
 
   for (const app of apps) {
     if (!defaultApps.includes(app)) {
-      console.log({defaultApps, app, apps})
+      console.log({ defaultApps, app, apps });
       throw new Error(`${app} not supported`);
     }
   }
@@ -59,8 +59,13 @@ export async function render(
     outputFilePaths.push(pdfOutputPath);
     await mkdir(dirname(pdfOutputPath), { recursive: true });
 
-    reportFn({ type: `rendering`, app: app, inputPath: docxFilePath, outputPath: cwdRelative(pdfOutputPath) });
-    await renderers[app].render(docxFilePath, pdfOutputPath);
+    reportFn({
+      type: `rendering`,
+      app: app,
+      inputPath: docxFilePath,
+      outputPath: cwdRelative(pdfOutputPath),
+    });
+    await renderers[app].render("docx", docxFilePath, pdfOutputPath);
 
     const pagesDirPath = join(dirname(pdfOutputPath), "images");
     await mkdir(pagesDirPath, { recursive: true });

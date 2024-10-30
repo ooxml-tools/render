@@ -1,8 +1,13 @@
 import { mkdir, rename, rmdir } from "fs/promises";
 import { openApp } from "open";
 import { basename, dirname, extname, join } from "path";
+import { Format, FORMATS } from "src/renderers";
 
-export async function render(inputPath: string, outputPath: string) {
+export async function render(
+  _format: Format,
+  inputPath: string,
+  outputPath: string,
+) {
   const dirpath = dirname(outputPath);
   const tmpExportDirPath = join(dirpath, "tmp");
   const tmpExportFilePath = join(
@@ -25,6 +30,6 @@ export async function render(inputPath: string, outputPath: string) {
   await rmdir(tmpExportDirPath);
 }
 
-export async function isSupported() {
-  return true;
+export async function isSupported(format: Format) {
+  return FORMATS.includes(format);
 }
