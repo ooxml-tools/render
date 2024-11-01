@@ -17,13 +17,20 @@ export const builder = (yargs: Argv) => {
       describe: "office version used for validation",
       choices: SUPPORTED_APPS,
     })
-    .demandOption(["filepath", "app"]);
+    .option("throws", {
+      type: "boolean",
+      describe: "throws when an app is missing",
+    })
+    .demandOption(["filepath"]);
 };
 
 export async function handler({
   filepath,
   app,
-}: ArgumentsCamelCase<{ filepath: string; app: string | string[] }>) {
-  const apps = (Array.isArray(app) ? app : [app]) as App[];
-  await render(filepath, console.log, apps);
+  throws,
+}: ArgumentsCamelCase<{ filepath: string; app: string | string[], throws: boolean }>) {
+  const apps = app ? (Array.isArray(app) ? app : [app]) as App[] : null;
+  await render(filepath, console.log, apps, {
+    throws 
+  });
 }

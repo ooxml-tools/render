@@ -4,6 +4,7 @@ import { App, renderers } from "./renderers";
 import { mkdir, readdir, writeFile } from "fs/promises";
 import { convertPages } from "./imagemagick";
 import { getSupportedApps } from "./apps";
+import { getFormatFromFilename } from "./helper";
 
 function sortPageFiles(a: string, b: string) {
   const aMatch = a.match(/page-(.*)\.png/);
@@ -37,19 +38,31 @@ type ReporterArg =
   | { type: "writing"; path: string; apps: App[] };
 type ReporterFn = (data: ReporterArg) => void;
 
+type RenderOpts = {
+  throws?: boolean;
+}
+
 export async function render(
   docxpath: string,
   reportFn: ReporterFn,
-  apps: App[],
+  inputApps: App[] | null,
+  opts: RenderOpts={},
 ) {
-  const defaultApps = await getSupportedApps();
+  const defaultApps = await getSupportedApps(docxpath);
+  const wantedApps = inputApps ?? defaultApps;
 
   const docxFilePath = join(process.cwd(), docxpath);
 
-  for (const app of apps) {
-    if (!defaultApps.includes(app)) {
-      console.log({ defaultApps, app, apps });
-      throw new Error(`${app} not supported`);
+  const apps: App[] = []
+  for (const wantedApp of wantedApps) {
+    if (!defaultApps.includes(wantedApp)) {
+      if (opts.throws) {
+        throw new Error(`${wantedApp} not supported`);
+      } else {
+        console.error(`WARNING: ${wantedApp} not supported`)
+      }
+    } else {
+      apps.push(wantedApp);
     }
   }
 
@@ -65,7 +78,7 @@ export async function render(
       inputPath: docxFilePath,
       outputPath: cwdRelative(pdfOutputPath),
     });
-    await renderers[app].render("docx", docxFilePath, pdfOutputPath);
+    await renderers[app].render(getFormatFromFilename(docxFilePath), docxFilePath, pdfOutputPath);
 
     const pagesDirPath = join(dirname(pdfOutputPath), "images");
     await mkdir(pagesDirPath, { recursive: true });
