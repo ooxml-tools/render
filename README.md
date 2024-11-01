@@ -31,12 +31,11 @@ This tool can be used as a part of visual regression for various editors
   - `googledocs` — 🔜
   - `onedrive` — 🔜
 
-
 ## Requirements
+
 You must have the apps you wish to use above installed on your machine.
 
 We use imagemagick for converting PDFs created from the various editors. So you must either have the `imagemagick` CLI installed locally or `docker` installed on your machine.
-
 
 ## Usage
 
