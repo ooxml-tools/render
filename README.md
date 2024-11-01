@@ -15,19 +15,19 @@ This tool can be used as a part of visual regression for various editors
 - `.docx`
   - `msword` — ✅macos/🔜win
   - `pages` — ✅macos
-  - `libreoffice` — ✅macos/🔜linux
+  - `libreoffice` — ✅macos/🔜linux/🔜win
   - `googledocs` — 🔜
   - `onedrive` — 🔜
 - `.pptx`
   - `powerpoint` — ✅macos/🔜win
   - `keynote` — ✅macos
-  - `libreoffice` — ✅macos/🔜linux
+  - `libreoffice` — ✅macos/🔜linux/🔜win
   - `googledocs` — 🔜
   - `onedrive` — 🔜
 - `.xlsx`
   - `excel` — ✅macos/🔜win
   - `numbers` — ✅macos
-  - `libreoffice` — ✅macos/🔜linux
+  - `libreoffice` — ✅macos/🔜linux/🔜win
   - `googledocs` — 🔜
   - `onedrive` — 🔜
 
@@ -38,7 +38,7 @@ import render from "@ooxml-tools/render";
 
 const input = await readFile("./test.docx");
 const outputDir = "./output/";
-await render(input, "msword", outputDir);
+await render(input, ["msword"], outputDir);
 ```
 
 ## CLI
