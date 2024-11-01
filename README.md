@@ -13,21 +13,21 @@ This tool can be used as a part of visual regression for various editors
 ## Support
 
 - `.docx`
-  - `msword` — ✅macos/🔜win
+  - `msword` — ✅macos / 🔜win
   - `pages` — ✅macos
-  - `libreoffice` — ✅macos/🔜linux/🔜win
+  - `libreoffice` — ✅macos / 🔜linux / 🔜win
   - `googledocs` — 🔜
   - `onedrive` — 🔜
 - `.pptx`
-  - `powerpoint` — ✅macos/🔜win
+  - `powerpoint` — ✅macos / 🔜win
   - `keynote` — ✅macos
-  - `libreoffice` — ✅macos/🔜linux/🔜win
+  - `libreoffice` — ✅macos / 🔜linux / 🔜win
   - `googledocs` — 🔜
   - `onedrive` — 🔜
 - `.xlsx`
-  - `excel` — ✅macos/🔜win
+  - `excel` — ✅macos / 🔜win
   - `numbers` — ✅macos
-  - `libreoffice` — ✅macos/🔜linux/🔜win
+  - `libreoffice` — ✅macos / 🔜linux / 🔜win
   - `googledocs` — 🔜
   - `onedrive` — 🔜
 
