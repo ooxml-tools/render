@@ -40,11 +40,11 @@ type ReporterFn = (data: ReporterArg) => void;
 
 type RenderOpts = {
   throws?: boolean;
+  reportFn?: ReporterFn;
 }
 
 export async function render(
   docxpath: string,
-  reportFn: ReporterFn,
   inputApps: App[] | null,
   opts: RenderOpts={},
 ) {
@@ -53,6 +53,8 @@ export async function render(
 
   const docxFilePath = join(process.cwd(), docxpath);
 
+  const reportFn = opts.reportFn ?? console.log;
+  
   const apps: App[] = []
   for (const wantedApp of wantedApps) {
     if (!defaultApps.includes(wantedApp)) {

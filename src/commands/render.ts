@@ -30,7 +30,7 @@ export async function handler({
   throws,
 }: ArgumentsCamelCase<{ filepath: string; app: string | string[], throws: boolean }>) {
   const apps = app ? (Array.isArray(app) ? app : [app]) as App[] : null;
-  await render(filepath, console.log, apps, {
-    throws 
+  await render(filepath, apps, {
+    throws,
   });
 }

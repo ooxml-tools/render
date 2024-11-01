@@ -45,15 +45,21 @@ await render(input, "msword", outputDir);
 
 ```bash
 npx @ooxml-tools/render --help
-# npx @ooxml-tools/render <command> [args]
-#
-# Commands:
-#   render <filepath>   render files
-#   support <filepath>  get supported apps for filepath
-#
+# npx @ooxml-tools/render <filepath>
+# 
+# render files
+# 
+# Positionals:
+#   filepath  filepath of OOXML file                           [string] [required]
+# 
 # Options:
-#   --version  Show version number                                       [boolean]
-#   --help     Show help                                                 [boolean]
+#       --version  Show version number                                   [boolean]
+#       --help     Show help                                             [boolean]
+#   -a, --app      office version used for validation
+#         [choices: "excel", "googledocs", "keynote", "powerpoint", "libreoffice",
+#                                        "msword", "numbers", "onedrive", "pages"]
+#       --throws   throws when an app is missing                         [boolean]
+# 
 ```
 
 ## License
