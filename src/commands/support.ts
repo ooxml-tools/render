@@ -19,7 +19,6 @@ export const builder = (yargs: Argv) => {
 export async function handler({
   filepath,
 }: ArgumentsCamelCase<{ filepath: string }>) {
-  // HACK
   const format = extname(filepath).slice(1) as OfficeOpenXmlType;
 
   if (!FORMATS.includes(format)) {
