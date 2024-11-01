@@ -1,10 +1,9 @@
-import { join } from "path";
 import { $ } from "execa";
 import { isOsaScriptSupported } from "../../helper";
-import { Format } from "src/renderers";
+import { OfficeOpenXmlType } from "@ooxml-tools/file";
 
 export async function render(
-  format: Format,
+  format: OfficeOpenXmlType,
   inputPath: string,
   outputPath: string,
 ) {
@@ -24,7 +23,7 @@ end run
   await $`osascript -e ${appleScript} ${inputPath} ${outputPath}`;
 }
 
-export async function isSupported(format: Format) {
+export async function isSupported(format: OfficeOpenXmlType) {
   if (format === "docx") {
     if (await isOsaScriptSupported()) {
       const appleScript = `tell application "Finder" to get application file id "com.microsoft.Word"`;

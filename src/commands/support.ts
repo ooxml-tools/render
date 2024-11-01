@@ -1,6 +1,7 @@
 import { ArgumentsCamelCase, Argv } from "yargs";
-import { FORMATS, renderers, SUPPORTED_APPS } from "../renderers";
+import { renderers, SUPPORTED_APPS } from "../renderers";
 import { extname } from "path";
+import { FORMATS, OfficeOpenXmlType } from "@ooxml-tools/file";
 
 export const cmd = "support <filepath>";
 
@@ -19,7 +20,7 @@ export async function handler({
   filepath,
 }: ArgumentsCamelCase<{ filepath: string }>) {
   // HACK
-  const format = extname(filepath).slice(1);
+  const format = extname(filepath).slice(1) as OfficeOpenXmlType;
 
   if (!FORMATS.includes(format)) {
     throw new Error(`Invalid format ${format}`);

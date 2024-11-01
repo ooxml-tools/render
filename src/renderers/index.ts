@@ -7,6 +7,7 @@ import * as mswordRender from "./msword";
 import * as numbersRender from "./numbers";
 import * as onedriveRender from "./onedrive";
 import * as pagesRender from "./pages";
+import { OfficeOpenXmlType } from "@ooxml-tools/file";
 
 export const SUPPORTED_APPS = [
   "excel",
@@ -20,9 +21,6 @@ export const SUPPORTED_APPS = [
   "pages",
 ] as const;
 
-export const FORMATS = ["docx", "xlsx", "pptx"];
-export type Format = (typeof FORMATS)[number];
-
 export type App = (typeof SUPPORTED_APPS)[number];
 
 export function isSupportedRenderer(input: string) {
@@ -31,11 +29,11 @@ export function isSupportedRenderer(input: string) {
 
 export type Renderer = {
   render: (
-    format: Format,
+    format: OfficeOpenXmlType,
     inputDocxPath: string,
     outputDirectory: string,
   ) => Promise<void>;
-  isSupported: (format: Format) => Promise<boolean>;
+  isSupported: (format: OfficeOpenXmlType) => Promise<boolean>;
 };
 
 export const renderers: Record<App, Renderer> = {

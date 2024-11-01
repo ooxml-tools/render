@@ -1,10 +1,10 @@
+import { FORMATS, OfficeOpenXmlType } from "@ooxml-tools/file";
 import { mkdir, rename, rmdir } from "fs/promises";
 import { openApp } from "open";
 import { basename, dirname, extname, join } from "path";
-import { Format, FORMATS } from "src/renderers";
 
 export async function render(
-  _format: Format,
+  _format: OfficeOpenXmlType,
   inputPath: string,
   outputPath: string,
 ) {
@@ -30,6 +30,6 @@ export async function render(
   await rmdir(tmpExportDirPath);
 }
 
-export async function isSupported(format: Format) {
+export async function isSupported(format: OfficeOpenXmlType) {
   return FORMATS.includes(format);
 }

@@ -4,7 +4,7 @@ import { App, renderers } from "./renderers";
 import { mkdir, readdir, writeFile } from "fs/promises";
 import { convertPages } from "./imagemagick";
 import { getSupportedApps } from "./apps";
-import { getFormatFromFilename } from "./helper";
+import { formatFromFilename } from "@ooxml-tools/file";
 
 function sortPageFiles(a: string, b: string) {
   const aMatch = a.match(/page-(.*)\.png/);
@@ -81,7 +81,7 @@ export async function render(
       outputPath: cwdRelative(pdfOutputPath),
     });
     await renderers[app].render(
-      getFormatFromFilename(docxFilePath),
+      formatFromFilename(docxFilePath),
       docxFilePath,
       pdfOutputPath,
     );
