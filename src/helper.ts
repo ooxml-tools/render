@@ -14,7 +14,6 @@ export async function isOsaScriptSupported() {
   }
 }
 
-
-export function getFormatFromFilename (filepath: string) {
-  return extname(filepath).slice(1)
+export function getFormatFromFilename(filepath: string) {
+  return extname(filepath).slice(1);
 }

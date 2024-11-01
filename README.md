@@ -16,20 +16,20 @@ This tool can be used as a part of visual regression for various editors
   - `msword` — ✅ macos / 🔜 win
   - `pages` — ✅ macos
   - `libreoffice` — ✅ macos / 🔜 linux / 🔜 win
-  - `googledocs` — 🔜 
-  - `onedrive` — 🔜 
+  - `googledocs` — 🔜
+  - `onedrive` — 🔜
 - `.pptx`
   - `powerpoint` — ✅ macos / 🔜 win
   - `keynote` — ✅ macos
   - `libreoffice` — ✅ macos / 🔜 linux / 🔜 win
-  - `googledocs` — 🔜 
-  - `onedrive` — 🔜 
+  - `googledocs` — 🔜
+  - `onedrive` — 🔜
 - `.xlsx`
   - `excel` — ✅ macos / 🔜 win
   - `numbers` — ✅ macos
   - `libreoffice` — ✅ macos / 🔜 linux / 🔜 win
-  - `googledocs` — 🔜 
-  - `onedrive` — 🔜 
+  - `googledocs` — 🔜
+  - `onedrive` — 🔜
 
 ## Usage
 
@@ -46,12 +46,12 @@ await render(input, ["msword"], outputDir);
 ```bash
 npx @ooxml-tools/render --help
 # npx @ooxml-tools/render <filepath>
-# 
+#
 # render files
-# 
+#
 # Positionals:
 #   filepath  filepath of OOXML file                           [string] [required]
-# 
+#
 # Options:
 #       --version  Show version number                                   [boolean]
 #       --help     Show help                                             [boolean]
@@ -59,7 +59,7 @@ npx @ooxml-tools/render --help
 #         [choices: "excel", "googledocs", "keynote", "powerpoint", "libreoffice",
 #                                        "msword", "numbers", "onedrive", "pages"]
 #       --throws   throws when an app is missing                         [boolean]
-# 
+#
 ```
 
 ## License

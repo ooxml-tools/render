@@ -41,12 +41,12 @@ type ReporterFn = (data: ReporterArg) => void;
 type RenderOpts = {
   throws?: boolean;
   reportFn?: ReporterFn;
-}
+};
 
 export async function render(
   docxpath: string,
   inputApps: App[] | null,
-  opts: RenderOpts={},
+  opts: RenderOpts = {},
 ) {
   const defaultApps = await getSupportedApps(docxpath);
   const wantedApps = inputApps ?? defaultApps;
@@ -54,14 +54,14 @@ export async function render(
   const docxFilePath = join(process.cwd(), docxpath);
 
   const reportFn = opts.reportFn ?? console.log;
-  
-  const apps: App[] = []
+
+  const apps: App[] = [];
   for (const wantedApp of wantedApps) {
     if (!defaultApps.includes(wantedApp)) {
       if (opts.throws) {
         throw new Error(`${wantedApp} not supported`);
       } else {
-        console.error(`WARNING: ${wantedApp} not supported`)
+        console.error(`WARNING: ${wantedApp} not supported`);
       }
     } else {
       apps.push(wantedApp);
@@ -80,7 +80,11 @@ export async function render(
       inputPath: docxFilePath,
       outputPath: cwdRelative(pdfOutputPath),
     });
-    await renderers[app].render(getFormatFromFilename(docxFilePath), docxFilePath, pdfOutputPath);
+    await renderers[app].render(
+      getFormatFromFilename(docxFilePath),
+      docxFilePath,
+      pdfOutputPath,
+    );
 
     const pagesDirPath = join(dirname(pdfOutputPath), "images");
     await mkdir(pagesDirPath, { recursive: true });

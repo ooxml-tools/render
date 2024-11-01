@@ -17,7 +17,11 @@ end run`;
 
 const EXISTS_APPLESCRIPT = `tell application "Finder" to get application file id "com.apple.iWork.Keynote"`;
 
-export async function render(format: Format, inputPath: string, outputPath: string) {
+export async function render(
+  format: Format,
+  inputPath: string,
+  outputPath: string,
+) {
   await $`osascript -e ${CONVERT_APPLESCRIPT} ${inputPath} ${outputPath}`;
 }
 

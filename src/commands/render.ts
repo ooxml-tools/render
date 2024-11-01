@@ -28,8 +28,12 @@ export async function handler({
   filepath,
   app,
   throws,
-}: ArgumentsCamelCase<{ filepath: string; app: string | string[], throws: boolean }>) {
-  const apps = app ? (Array.isArray(app) ? app : [app]) as App[] : null;
+}: ArgumentsCamelCase<{
+  filepath: string;
+  app: string | string[];
+  throws: boolean;
+}>) {
+  const apps = app ? ((Array.isArray(app) ? app : [app]) as App[]) : null;
   await render(filepath, apps, {
     throws,
   });
