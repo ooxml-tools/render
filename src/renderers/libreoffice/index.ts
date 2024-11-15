@@ -67,7 +67,7 @@ export async function render(
 
 export async function isSupported(format: OfficeOpenXmlType) {
   console.log("FORMATS.includes(format)=", FORMATS.includes(format))
-  if (FORMATS.includes(format)) {
+  if (!FORMATS.includes(format)) {
     return false;
   }
 
