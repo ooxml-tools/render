@@ -2,7 +2,8 @@ import { $ } from "execa";
 import tempfile from "tempfile";
 import { writeFile } from "fs/promises";
 
-const COMPOSE_FILE = `services:
+const COMPOSE_FILE = `version: "3"
+services:
   convert:
     build:
       dockerfile_inline: |
