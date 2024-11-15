@@ -79,7 +79,7 @@ export async function isSupported(format: OfficeOpenXmlType) {
       await $`command -v /Applications/LibreOffice.app/Contents/MacOS/soffice`;
     return rslt.exitCode === 0;
   } else if (platform === "linux") {
-    const rslt = await $`command -v soffice`;
+    const rslt = await $`command -v libreoffice`;
     return rslt.exitCode === 0;
   } else {
     return false;
