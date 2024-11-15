@@ -1,4 +1,6 @@
 #/usr/bin/env bash 
+set -e
+
 ./node_modules/.bin/tsx ./bin/ooxml-render.ts render ./scripts/test-files/simple.docx
 
 npx percy snapshot ./docx-files
