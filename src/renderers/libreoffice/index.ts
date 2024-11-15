@@ -66,10 +66,12 @@ export async function render(
 }
 
 export async function isSupported(format: OfficeOpenXmlType) {
+  console.log("FORMATS.includes(format)=", FORMATS.includes(format))
   if (FORMATS.includes(format)) {
     return false;
   }
 
+  console.log("platform=", platform)
   if (platform === "win32") {
     const rslt =
       await $`where C:\\Program Files (x86)\\LibreOffice 5\\program\\soffice.exe`;
