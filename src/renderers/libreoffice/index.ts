@@ -71,11 +71,14 @@ export async function isSupported(format: OfficeOpenXmlType) {
   }
 
   if (platform === "win32") {
-    await $`where C:\\Program Files (x86)\\LibreOffice 5\\program\\soffice.exe`;
+    const rslt = await $`where C:\\Program Files (x86)\\LibreOffice 5\\program\\soffice.exe`;
+    return rslt.exitCode === 0
   } else if (platform === "darwin") {
-    await $`command -v /Applications/LibreOffice.app/Contents/MacOS/soffice`;
+    const rslt = await $`command -v /Applications/LibreOffice.app/Contents/MacOS/soffice`;
+    return rslt.exitCode === 0
   } else if (platform === "linux") {
-    await $`command -v soffice`;
+    const rslt = await $`command -v soffice`;
+    return rslt.exitCode === 0
   } else {
     return false;
   }
