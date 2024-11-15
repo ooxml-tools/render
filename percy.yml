@@ -1,0 +1,8 @@
+version: 2
+static:
+  base-url: /
+  clean-urls: false
+  include: **/*.html
+  exclude: []
+  rewrites: {}
+  options: []
