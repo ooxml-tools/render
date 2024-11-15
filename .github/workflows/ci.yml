@@ -44,7 +44,7 @@ jobs:
         with:
           node-version: "20.x"
       - name: install libreoffice
-        run: apt update && sudo apt-get install -y libreoffice
+        run: sudo apt update && sudo apt-get install -y libreoffice
       - name: npm auth
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
       - run: npm ci
