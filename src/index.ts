@@ -68,6 +68,8 @@ export async function render(
     }
   }
 
+  console.log("apps=", apps);
+
   const outputFilePaths = [];
   for (const app of apps) {
     const pdfOutputPath = getOutputPath(docxFilePath, app);
