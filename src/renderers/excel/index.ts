@@ -1,7 +1,7 @@
 import { $ } from "execa";
 import { isOsaScriptSupported } from "../../helper";
 import { OfficeOpenXmlType } from "@ooxml-tools/file";
-import { platform } from 'node:process';
+import { platform } from "node:process";
 
 export async function render(
   format: OfficeOpenXmlType,

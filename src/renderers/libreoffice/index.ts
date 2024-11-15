@@ -3,11 +3,11 @@ import { FORMATS, OfficeOpenXmlType } from "@ooxml-tools/file";
 import { mkdir, rename, rmdir } from "fs/promises";
 import { openApp } from "open";
 import { basename, dirname, extname, join } from "path";
-import { platform } from 'node:process';
+import { platform } from "node:process";
 
-async function convert (inputPath: string, exportDirPath: string) {
+async function convert(inputPath: string, exportDirPath: string) {
   if (platform === "win32") {
-    await openApp("C:\Program Files (x86)\LibreOffice 5\program\soffice.exe", {
+    await openApp("C:Program Files (x86)LibreOffice 5programsoffice.exe", {
       arguments: [
         `-headless`,
         `-convert-to`,
@@ -45,7 +45,7 @@ async function convert (inputPath: string, exportDirPath: string) {
   } else {
     throw new Error(`Not supported ${platform}`);
   }
-} 
+}
 
 export async function render(
   _format: OfficeOpenXmlType,
@@ -71,11 +71,11 @@ export async function isSupported(format: OfficeOpenXmlType) {
   }
 
   if (platform === "win32") {
-    await $`where C:\\Program Files (x86)\\LibreOffice 5\\program\\soffice.exe`
+    await $`where C:\\Program Files (x86)\\LibreOffice 5\\program\\soffice.exe`;
   } else if (platform === "darwin") {
-    await $`command -v /Applications/LibreOffice.app/Contents/MacOS/soffice`
+    await $`command -v /Applications/LibreOffice.app/Contents/MacOS/soffice`;
   } else if (platform === "linux") {
-    await $`command -v soffice`
+    await $`command -v soffice`;
   } else {
     return false;
   }

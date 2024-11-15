@@ -1,7 +1,7 @@
 import { $ } from "execa";
 import { isOsaScriptSupported } from "../../helper";
 import { OfficeOpenXmlType } from "@ooxml-tools/file";
-import { platform } from 'node:process';
+import { platform } from "node:process";
 
 const CONVERT_APPLESCRIPT = `on run argv
 	set input_file to (POSIX file (item 1 of argv))
