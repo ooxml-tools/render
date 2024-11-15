@@ -74,7 +74,7 @@ export async function render(
   for (const app of apps) {
     const pdfOutputPath = getOutputPath(docxFilePath, app);
     outputFilePaths.push(pdfOutputPath);
-    console.log(">>> mkdir", dirname(pdfOutputPath))
+    console.log(">>> mkdir", dirname(pdfOutputPath));
     await mkdir(dirname(pdfOutputPath), { recursive: true });
 
     reportFn({
@@ -90,7 +90,7 @@ export async function render(
     );
 
     const pagesDirPath = join(dirname(pdfOutputPath), "images");
-    console.log(">>> mkdir", pagesDirPath)
+    console.log(">>> mkdir", pagesDirPath);
     await mkdir(pagesDirPath, { recursive: true });
     reportFn({
       type: "flattening",
