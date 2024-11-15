@@ -15,19 +15,19 @@ This tool can be used as a part of visual regression for various editors
 - `.docx`
   - `msword` — ✅ macos / 🔜 win
   - `pages` — ✅ macos
-  - `libreoffice` — ✅ macos / 🔜 linux / 🔜 win
+  - `libreoffice` — ✅ macos / ✅ linux / ✅ win
   - `googledocs` — 🔜
   - `onedrive` — 🔜
 - `.pptx`
   - `powerpoint` — ✅ macos / 🔜 win
   - `keynote` — ✅ macos
-  - `libreoffice` — ✅ macos / 🔜 linux / 🔜 win
+  - `libreoffice` — ✅ macos / ✅ linux / ✅ win
   - `googledocs` — 🔜
   - `onedrive` — 🔜
 - `.xlsx`
   - `excel` — ✅ macos / 🔜 win
   - `numbers` — ✅ macos
-  - `libreoffice` — ✅ macos / 🔜 linux / 🔜 win
+  - `libreoffice` — ✅ macos / ✅ linux / ✅ win
   - `googledocs` — 🔜
   - `onedrive` — 🔜
 

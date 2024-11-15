@@ -1,5 +1,5 @@
 export async function render(inputPath: string, outputPath: string) {
-  console.log("TODO");
+  throw new Error(`onedrive not yet supported`);
 }
 
 export async function isSupported() {

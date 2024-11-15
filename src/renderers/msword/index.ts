@@ -1,6 +1,7 @@
 import { $ } from "execa";
 import { isOsaScriptSupported } from "../../helper";
 import { OfficeOpenXmlType } from "@ooxml-tools/file";
+import {platform} from "node:process"
 
 export async function render(
   format: OfficeOpenXmlType,
@@ -25,14 +26,19 @@ end run
 
 export async function isSupported(format: OfficeOpenXmlType) {
   if (format === "docx") {
-    if (await isOsaScriptSupported()) {
-      const appleScript = `tell application "Finder" to get application file id "com.microsoft.Word"`;
-      try {
-        await $`osascript -e ${appleScript}`;
-        return true;
-      } catch (err) {
-        return false;
+    if (platform === "darwin") {
+      if (await isOsaScriptSupported()) {
+        const appleScript = `tell application "Finder" to get application file id "com.microsoft.Word"`;
+        try {
+          await $`osascript -e ${appleScript}`;
+          return true;
+        } catch (err) {
+          return false;
+        }
       }
+    }
+    if (platform === "win32") {
+      // TODO:
     }
   }
   return false;
