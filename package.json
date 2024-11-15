@@ -17,7 +17,7 @@
   },
   "exports": {
     ".": "./dist/npm/index.js",
-    "./command": "./dist/npm/command.js"
+    "./commands": "./dist/npm/commands.js"
   },
   "files": [
     "./dist/npm",
