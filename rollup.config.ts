@@ -10,7 +10,7 @@ export default [
     input: {
       index: "src/index.ts",
       "bin/ooxml-render": "bin/ooxml-render.ts",
-      command: "src/command.ts",
+      commands: "src/commands/index.ts",
     },
     output: {
       dir: outputDir,
@@ -25,8 +25,8 @@ export default [
     plugins: [typescriptPaths({ preserveExtensions: true }), dts()],
   },
   {
-    input: "src/command.ts",
-    output: [{ file: `${outputDir}/command.d.ts`, format: "es" }],
+    input: "src/commands/index.ts",
+    output: [{ file: `${outputDir}/commands.d.ts`, format: "es" }],
     plugins: [typescriptPaths({ preserveExtensions: true }), dts()],
   },
 ];
