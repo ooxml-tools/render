@@ -22,7 +22,7 @@ export default [
       shebang({
         shebang: "#!/usr/bin/env node",
       }),
-      typescript({ tsconfig: "./tsconfig.json" })
+      typescript({ tsconfig: "./tsconfig.json" }),
     ],
   },
   {
