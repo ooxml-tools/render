@@ -15,19 +15,19 @@ This tool can be used as a part of visual regression for various editors
 - `.docx`
   - `msword` — ✅ macos / 🔜 win
   - `pages` — ✅ macos
-  - `libreoffice` — ✅ macos / ✅ linux / ✅ win
+  - `libreoffice` — ✅ macos / 🔜 linux / 🔜 win
   - `googledocs` — 🔜
   - `onedrive` — 🔜
 - `.pptx`
-  - `powerpoint` — ✅ macos / 🔜 win
+  - `powerpoint` — 🔜 macos / 🔜 win
   - `keynote` — ✅ macos
-  - `libreoffice` — ✅ macos / ✅ linux / ✅ win
+  - `libreoffice` — ✅ macos / 🔜 linux / 🔜 win
   - `googledocs` — 🔜
   - `onedrive` — 🔜
 - `.xlsx`
-  - `excel` — ✅ macos / 🔜 win
+  - `excel` — 🔜 macos / 🔜 win
   - `numbers` — ✅ macos
-  - `libreoffice` — ✅ macos / ✅ linux / ✅ win
+  - `libreoffice` — ✅ macos / 🔜 linux / 🔜 win
   - `googledocs` — 🔜
   - `onedrive` — 🔜
 
@@ -35,7 +35,7 @@ This tool can be used as a part of visual regression for various editors
 
 You must have the apps you wish to use above installed on your machine.
 
-We use imagemagick for converting PDFs created from the various editors. So you must either have the `imagemagick` CLI installed locally or `docker` installed on your machine.
+We use imagemagick for converting PDFs created from the various editors. So you must either have the `imagemagick` CLI installed locally or `docker`/`docker-compose` installed on your machine.
 
 ## Usage
 
