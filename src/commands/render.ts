@@ -36,5 +36,12 @@ export async function handler({
   const apps = app ? ((Array.isArray(app) ? app : [app]) as App[]) : null;
   await render(filepath, apps, {
     throws,
+    reportFn: (data) => {
+      console.log(data);
+      // | { type: "rendering"; inputPath: string; outputPath: string; app: App }
+      // | { type: "flattening"; path: string; app: App }
+      // | { type: "generating"; path: string; app: App }
+      // | { type: "writing"; path: string; apps: App[] };
+    }
   });
 }
