@@ -42,6 +42,6 @@ export async function handler({
       // | { type: "flattening"; path: string; app: App }
       // | { type: "generating"; path: string; app: App }
       // | { type: "writing"; path: string; apps: App[] };
-    }
+    },
   });
 }
