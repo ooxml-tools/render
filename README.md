@@ -44,28 +44,22 @@ import render from "@ooxml-tools/render";
 
 const input = await readFile("./test.docx");
 const outputDir = "./output/";
-await render(input, ["msword"], outputDir);
+await render(input, ["msword"], {outputDir});
 ```
 
 ## CLI
 
 ```bash
 npx @ooxml-tools/render --help
-# npx @ooxml-tools/render <filepath>
-#
-# render files
-#
-# Positionals:
-#   filepath  filepath of OOXML file                           [string] [required]
-#
+# ooxml-render <command> [args]
+# 
+# Commands:
+#   render <filepath>   render files
+#   support <filepath>  list supported apps for <filepath>
+# 
 # Options:
-#       --version  Show version number                                   [boolean]
-#       --help     Show help                                             [boolean]
-#   -a, --app      office version used for validation
-#         [choices: "excel", "googledocs", "keynote", "powerpoint", "libreoffice",
-#                                        "msword", "numbers", "onedrive", "pages"]
-#       --throws   throws when an app is missing                         [boolean]
-#
+#   --version  Show version number                                       [boolean]
+#   --help     Show help                                                 [boolean]
 ```
 
 ## License

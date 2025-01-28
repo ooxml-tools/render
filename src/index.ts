@@ -41,6 +41,7 @@ type ReporterFn = (data: ReporterArg) => void;
 type RenderOpts = {
   throws?: boolean;
   reportFn?: ReporterFn;
+  outputPath?: string;
 };
 
 export async function render(
@@ -70,7 +71,7 @@ export async function render(
 
   const outputFilePaths = [];
   for (const app of apps) {
-    const pdfOutputPath = getOutputPath(docxFilePath, app);
+    const pdfOutputPath = getOutputPath(docxFilePath, app, opts.outputPath);
     outputFilePaths.push(pdfOutputPath);
     await mkdir(dirname(pdfOutputPath), { recursive: true });
 

@@ -1,7 +1,7 @@
 import { basename, resolve, join, relative } from "path";
 import { App } from "./renderers";
 
-export function getOutputPath(filePath: string, app: App) {
+export function getOutputPath(filePath: string, app: App, outPath=process.cwd()) {
   const filename = basename(filePath);
   const { platform } = process;
   if (!["darwin", "win32", "linux"].includes(platform)) {
@@ -9,7 +9,7 @@ export function getOutputPath(filePath: string, app: App) {
   }
 
   return resolve(
-    join(process.cwd(), `/docx-files/`, filename, platform, app, `output.pdf`),
+    join(outPath ?? process.cwd(), `/docx-files/`, filename, platform, app, `output.pdf`),
   );
 }
 
