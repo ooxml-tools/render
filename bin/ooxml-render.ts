@@ -4,7 +4,7 @@ import * as render from "../src/commands/render";
 import * as supported from "../src/commands/support";
 import { relative } from "path";
 
-const scriptName = relative(process.cwd(), process.argv[1] ?? "");
+const scriptName = "ooxml-render";
 
 yargs(process.argv.slice(2))
   .usage(`${scriptName} <command> [args]`)
