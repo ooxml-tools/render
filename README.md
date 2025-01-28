@@ -44,7 +44,7 @@ import render from "@ooxml-tools/render";
 
 const input = await readFile("./test.docx");
 const outputDir = "./output/";
-await render(input, ["msword"], {outputDir});
+await render(input, ["msword"], { outputDir });
 ```
 
 ## CLI
@@ -52,11 +52,11 @@ await render(input, ["msword"], {outputDir});
 ```bash
 npx @ooxml-tools/render --help
 # ooxml-render <command> [args]
-# 
+#
 # Commands:
 #   render <filepath>   render files
 #   support <filepath>  list supported apps for <filepath>
-# 
+#
 # Options:
 #   --version  Show version number                                       [boolean]
 #   --help     Show help                                                 [boolean]
