@@ -2,7 +2,7 @@
 import yargs from "yargs/yargs";
 import * as render from "../src/commands/render";
 import * as supported from "../src/commands/support";
-import { relative } from "path";
+import { version } from "../package.json";
 
 const scriptName = "ooxml-render";
 
@@ -12,5 +12,6 @@ yargs(process.argv.slice(2))
   .scriptName("")
   .command(render.cmd, render.desc, render.builder, render.handler)
   .command(supported.cmd, supported.desc, supported.builder, supported.handler)
+  .version(version)
   .help()
   .demand(1).argv;
