@@ -1,6 +1,7 @@
 import { ArgumentsCamelCase, Argv } from "yargs";
 import { App, SUPPORTED_APPS } from "../renderers";
 import { render } from "src";
+import { reportFn } from "./helper";
 
 export const cmd = "render <filepath>";
 
@@ -36,12 +37,6 @@ export async function handler({
   const apps = app ? ((Array.isArray(app) ? app : [app]) as App[]) : null;
   await render(filepath, apps, {
     throws,
-    reportFn: (data) => {
-      console.log(data);
-      // | { type: "rendering"; inputPath: string; outputPath: string; app: App }
-      // | { type: "flattening"; path: string; app: App }
-      // | { type: "generating"; path: string; app: App }
-      // | { type: "writing"; path: string; apps: App[] };
-    },
+    reportFn,
   });
 }

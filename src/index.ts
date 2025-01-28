@@ -31,7 +31,7 @@ export async function generatePreview(dirpath: string) {
   await writeFile(join(dirpath, "index.html"), htmlFile);
 }
 
-type ReporterArg =
+export type ReporterArg =
   | { type: "rendering"; inputPath: string; outputPath: string; app: App }
   | { type: "flattening"; path: string; app: App }
   | { type: "generating"; path: string; app: App }
@@ -67,8 +67,6 @@ export async function render(
       apps.push(wantedApp);
     }
   }
-
-  console.log("apps=", apps);
 
   const outputFilePaths = [];
   for (const app of apps) {

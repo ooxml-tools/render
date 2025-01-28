@@ -45,6 +45,7 @@
   "dependencies": {
     "@google-cloud/local-auth": "^3.0.1",
     "@ooxml-tools/file": "^0.2.1",
+    "chalk": "^5.4.1",
     "execa": "^9.3.0",
     "googleapis": "^142.0.0",
     "open": "^10.1.0",
