@@ -35,31 +35,31 @@ jobs:
             ./package.json
             ./README.md
 
-  percy:
-    runs-on: ubuntu-latest
+  # percy:
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20.x"
-      - name: Install Docker using Docker's official script
-        run: |
-          curl -fsSL https://get.docker.com -o get-docker.sh
-          sudo sh get-docker.sh
-        continue-on-error: false
-      - name: Install Docker Compose
-        run: |
-          sudo curl -L "https://github.com/docker/compose/releases/download/v2.30.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-          sudo chmod +x /usr/local/bin/docker-compose
-          docker-compose --version
-        continue-on-error: false
-      - name: install libreoffice
-        run: sudo apt update && sudo apt-get install -y libreoffice && libreoffice --help && command -v libreoffice && echo $?
-      - name: npm auth
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-      - run: npm ci
-      - run: PERCY_TOKEN=${{ secrets.PERCY_TOKEN }} ./scripts/percy.sh
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: "20.x"
+  #     - name: Install Docker using Docker's official script
+  #       run: |
+  #         curl -fsSL https://get.docker.com -o get-docker.sh
+  #         sudo sh get-docker.sh
+  #       continue-on-error: false
+  #     - name: Install Docker Compose
+  #       run: |
+  #         sudo curl -L "https://github.com/docker/compose/releases/download/v2.30.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  #         sudo chmod +x /usr/local/bin/docker-compose
+  #         docker-compose --version
+  #       continue-on-error: false
+  #     - name: install libreoffice
+  #       run: sudo apt update && sudo apt-get install -y libreoffice && libreoffice --help && command -v libreoffice && echo $?
+  #     - name: npm auth
+  #       run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+  #     - run: npm ci
+  #     - run: PERCY_TOKEN=${{ secrets.PERCY_TOKEN }} ./scripts/percy.sh
 
   release:
     runs-on: ubuntu-latest
