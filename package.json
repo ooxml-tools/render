@@ -1,6 +1,6 @@
 {
   "name": "@ooxml-tools/render",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "license": "MIT",
   "type": "module",
   "main": "./dist/npm/index.js",
