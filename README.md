@@ -1,4 +1,10 @@
-# <img alt="@ooxml-tools/render" height="56" src="https://github.com/user-attachments/assets/6d466b8c-64e5-4c8d-a849-5428c67535b1" />
+<h1>
+    <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="https://ooxml-tools.github.io/design/images/render-dark.png">
+        <source media="(prefers-color-scheme: light)" srcset="https://ooxml-tools.github.io/design/images/render-light.png">
+        <img alt="@ooxml-tools/render" height="56" src="https://ooxml-tools.github.io/design/images/render-light.png">
+    </picture>
+</h1>
 
 Render Office Open XML files in nodejs
 
