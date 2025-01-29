@@ -27,11 +27,11 @@
   "devDependencies": {
     "@percy/cli": "^1.30.2",
     "@rollup/plugin-json": "^6.1.0",
-    "@rollup/plugin-typescript": "^11.1.6",
+    "@rollup/plugin-typescript": "^12.1.2",
     "@rollup/plugin-virtual": "^3.0.2",
     "@tsconfig/node22": "^22.0.0",
     "@types/yargs": "^17.0.32",
-    "prettier": "3.3.3",
+    "prettier": "3.4.2",
     "rollup": "^4.18.1",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-dts": "^6.1.1",
@@ -48,7 +48,7 @@
     "@ooxml-tools/file": "^0.2.1",
     "chalk": "^5.4.1",
     "execa": "^9.3.0",
-    "googleapis": "^142.0.0",
+    "googleapis": "^144.0.0",
     "open": "^10.1.0",
     "tempfile": "^5.0.0",
     "yargs": "^17.7.2"
