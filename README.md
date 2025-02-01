@@ -6,7 +6,7 @@
     </picture>
 </h1>
 
-Render Office Open XML files in nodejs
+Render Office Open XML files in native applications (word, pages, etc...)
 
 Support for rendering
 
