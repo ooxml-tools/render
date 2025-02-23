@@ -50,7 +50,7 @@ type RenderOpts = {
 export async function render(
   docxpath: string,
   inputApps: App[] | null,
-  opts: RenderOpts = {disableIndex: false},
+  opts: RenderOpts = { disableIndex: false },
 ) {
   const defaultApps = await getSupportedApps(docxpath);
   const wantedApps = inputApps ?? defaultApps;
