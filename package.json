@@ -1,7 +1,7 @@
 {
   "name": "@ooxml-tools/render",
   "description": "Render Office Open XML files in native applications (word, pages, etc...)",
-  "version": "0.3.4",
+  "version": "0.4.0",
   "license": "MIT",
   "type": "module",
   "main": "./dist/npm/index.js",
