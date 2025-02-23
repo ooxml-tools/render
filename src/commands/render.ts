@@ -22,6 +22,10 @@ export const builder = (yargs: Argv) => {
       type: "boolean",
       describe: "throws when an app is missing",
     })
+    .option("disable-index", {
+      type: "boolean",
+      describe: "disable index pages",
+    })
     .demandOption(["filepath"]);
 };
 
@@ -29,14 +33,20 @@ export async function handler({
   filepath,
   app,
   throws,
+  disableIndex,
+  outputPath,
 }: ArgumentsCamelCase<{
   filepath: string;
   app: string | string[];
   throws: boolean;
+  disableIndex: boolean;
+  outputPath?: string;
 }>) {
   const apps = app ? ((Array.isArray(app) ? app : [app]) as App[]) : null;
   await render(filepath, apps, {
     throws,
     reportFn,
+    disableIndex,
+    outputPath,
   });
 }

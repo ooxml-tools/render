@@ -31,6 +31,8 @@ export async function generatePreview(dirpath: string) {
   await writeFile(join(dirpath, "index.html"), htmlFile);
 }
 
+const voidFn = () => {};
+
 export type ReporterArg =
   | { type: "rendering"; inputPath: string; outputPath: string; app: App }
   | { type: "flattening"; path: string; app: App }
@@ -42,19 +44,20 @@ type RenderOpts = {
   throws?: boolean;
   reportFn?: ReporterFn;
   outputPath?: string;
+  disableIndex: boolean;
 };
 
 export async function render(
   docxpath: string,
   inputApps: App[] | null,
-  opts: RenderOpts = {},
+  opts: RenderOpts = {disableIndex: false},
 ) {
   const defaultApps = await getSupportedApps(docxpath);
   const wantedApps = inputApps ?? defaultApps;
 
   const docxFilePath = join(process.cwd(), docxpath);
 
-  const reportFn = opts.reportFn ?? console.log;
+  const reportFn = opts.reportFn ?? voidFn;
 
   const apps: App[] = [];
   for (const wantedApp of wantedApps) {
@@ -96,13 +99,15 @@ export async function render(
     });
     await convertPages(pdfOutputPath, pagesDirPath);
 
-    const indexDirPath = join(dirname(pdfOutputPath));
-    reportFn({
-      type: `generating`,
-      app: app,
-      path: `${cwdRelative(indexDirPath)}/index.html`,
-    });
-    await generatePreview(indexDirPath);
+    if (!opts.disableIndex) {
+      const indexDirPath = join(dirname(pdfOutputPath));
+      reportFn({
+        type: `generating`,
+        app: app,
+        path: `${cwdRelative(indexDirPath)}/index.html`,
+      });
+      await generatePreview(indexDirPath);
+    }
   }
 
   const basePath = getCrossAppPath(docxFilePath);
@@ -124,54 +129,56 @@ export async function render(
     });
   };
 
-  const sections = [];
-  for await (const appDir of appDirs) {
-    const imageFiles = await readdir(join(basePath, appDir, "images"));
-    const imageElements = sortByName(imageFiles)
-      .map((imageFile) => {
-        const imagesPath = join(basePath, appDir, "images", imageFile);
-        return `
-                <img style="border: solid 1px #222222; max-width: 400px;" src="${imagesPath}" />
-            `;
-      })
-      .join("");
+  if (!opts.disableIndex) {
+    const sections = [];
+    for await (const appDir of appDirs) {
+      const imageFiles = await readdir(join(basePath, appDir, "images"));
+      const imageElements = sortByName(imageFiles)
+        .map((imageFile) => {
+          const imagesPath = join(basePath, appDir, "images", imageFile);
+          return `
+                  <img style="border: solid 1px #222222; max-width: 400px;" src="${imagesPath}" />
+              `;
+        })
+        .join("");
 
-    sections.push(`
-            <div style="display: flex; flex-direction: column; gap: 12px;">
-                <h2
-                    style="
-                        background: #222;
-                        padding: 12px;
-                        color: white;
-                        margin: 0;
-                        font-size: medium;
-                        font-family: monospace;
-                        font-weight: 400;
-                    "
-                >${appDir} (${imageFiles.length})</h2>
-                ${imageElements}
-            </div>
-        `);
+      sections.push(`
+              <div style="display: flex; flex-direction: column; gap: 12px;">
+                  <h2
+                      style="
+                          background: #222;
+                          padding: 12px;
+                          color: white;
+                          margin: 0;
+                          font-size: medium;
+                          font-family: monospace;
+                          font-weight: 400;
+                      "
+                  >${appDir} (${imageFiles.length})</h2>
+                  ${imageElements}
+              </div>
+          `);
+    }
+    const html = `
+          <body style="margin: 0;">
+              <div
+                  style="
+                      display: grid;
+                      grid-template-columns: repeat(${appDirs.length}, 400px);
+                      gap: 12px;
+                      padding: 12px;
+                  "
+              >
+                  ${sections.join("")}
+              </div>
+          </body>
+      `;
+    const outPath = join(opts.outputPath ?? basePath, "index.html");
+    await writeFile(outPath, html);
+    reportFn({
+      type: `writing`,
+      apps: appDirs as App[],
+      path: cwdRelative(outPath),
+    });
   }
-  const html = `
-        <body style="margin: 0;">
-            <div
-                style="
-                    display: grid;
-                    grid-template-columns: repeat(${appDirs.length}, 400px);
-                    gap: 12px;
-                    padding: 12px;
-                "
-            >
-                ${sections.join("")}
-            </div>
-        </body>
-    `;
-  const outPath = join(basePath, "index.html");
-  await writeFile(outPath, html);
-  reportFn({
-    type: `writing`,
-    apps: appDirs as App[],
-    path: cwdRelative(outPath),
-  });
 }
