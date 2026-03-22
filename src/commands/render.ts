@@ -3,13 +3,13 @@ import { App, SUPPORTED_APPS } from "../renderers";
 import { render } from "src";
 import { reportFn } from "./helper";
 
-export const cmd = "render <filepath>";
+export const cmd = "render <ooxmlpath>";
 
 export const desc = "render files";
 
 export const builder = (yargs: Argv) => {
   yargs
-    .positional("filepath", {
+    .positional("ooxmlpath", {
       describe: "filepath of OOXML file",
       type: "string",
     })
@@ -30,20 +30,20 @@ export const builder = (yargs: Argv) => {
 };
 
 export async function handler({
-  filepath,
+  ooxmlpath,
   app,
   throws,
   disableIndex,
   outputPath,
 }: ArgumentsCamelCase<{
-  filepath: string;
+  ooxmlpath: string;
   app: string | string[];
   throws: boolean;
   disableIndex: boolean;
   outputPath?: string;
 }>) {
   const apps = app ? ((Array.isArray(app) ? app : [app]) as App[]) : null;
-  await render(filepath, apps, {
+  await render(ooxmlpath, apps, {
     throws,
     reportFn,
     disableIndex,
