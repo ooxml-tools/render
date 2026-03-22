@@ -9,6 +9,10 @@
   "bin": {
     "ooxml-render": "./dist/npm/bin/ooxml-render.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ooxml-tools/render"
+  },
   "scripts": {
     "lint": "npx prettier . --check",
     "lint:format": "npx prettier . --write",
