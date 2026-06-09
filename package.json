@@ -14,10 +14,10 @@
     "url": "https://github.com/ooxml-tools/render"
   },
   "scripts": {
-    "lint": "npx prettier . --check",
-    "lint:format": "npx prettier . --write",
+    "lint": "pnpx prettier . --check",
+    "lint:format": "pnpx prettier . --write",
     "test": "exit 0",
-    "build": "npm run build:npm",
+    "build": "pnpm run build:npm",
     "build:npm": "rollup -c rollup.config.ts --configPlugin typescript"
   },
   "exports": {
