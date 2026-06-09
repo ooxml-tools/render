@@ -18,15 +18,19 @@ jobs:
 
     steps:
       - uses: actions/checkout@v6
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          cache: true
       - uses: actions/setup-node@v6
         with:
           node-version: "24.x"
       - name: npm auth
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-      - run: npm ci
-      - run: npm run lint
-      - run: npm test
-      - run: NODE_OPTIONS="--max-old-space-size=4096" npm run build
+      - run: pnpm ci
+      - run: pnpm run lint
+      - run: pnpm test
+      - run: NODE_OPTIONS="--max-old-space-size=4096" pnpm run build
       - uses: actions/upload-artifact@v6
         with:
           name: npm
@@ -58,7 +62,7 @@ jobs:
   #       run: sudo apt update && sudo apt-get install -y libreoffice && libreoffice --help && command -v libreoffice && echo $?
   #     - name: npm auth
   #       run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-  #     - run: npm ci
+  #     - run: pnpm ci
   #     - run: PERCY_TOKEN=${{ secrets.PERCY_TOKEN }} ./scripts/percy.sh
 
   release:
@@ -69,6 +73,10 @@ jobs:
       contents: write
       id-token: write
     steps:
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          cache: true
       - uses: actions/setup-node@v6
         with:
           node-version: "24.x"
@@ -86,6 +94,6 @@ jobs:
             npm.zip
       - run: |
           cd npm
-          npm publish
+          pnpm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
