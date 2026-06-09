@@ -45,8 +45,10 @@
     "tslib": "^2.6.3",
     "tsx": "^4.16.2"
   },
+  "packageManager": "pnpm@11.2.0",
   "engines": {
-    "node": ">=20.x"
+    "node": ">=20.x",
+    "pnpm": ">=11"
   },
   "dependencies": {
     "@google-cloud/local-auth": "^3.0.1",
