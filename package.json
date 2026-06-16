@@ -52,7 +52,7 @@
   },
   "dependencies": {
     "@google-cloud/local-auth": "^3.0.1",
-    "@ooxml-tools/file": "^0.2.10",
+    "@ooxml-tools/file": "^0.6.5",
     "chalk": "^5.4.1",
     "execa": "^9.6.1",
     "googleapis": "^164.1.0",
