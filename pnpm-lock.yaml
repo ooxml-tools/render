@@ -27,8 +27,8 @@ importers:
         specifier: ^11.0.0
         version: 11.0.0
       tempfile:
-        specifier: ^5.0.0
-        version: 5.0.0
+        specifier: ^6.0.1
+        version: 6.0.1
       yargs:
         specifier: ^18.0.0
         version: 18.0.0
@@ -1048,6 +1048,10 @@ packages:
     resolution: {integrity: sha512-Xnpx182SBMrr/aBik8y+GuR4U1L9FqMSojwDQwPMmxyC6bvEqly9UBCxhauBF5vNh2gwWJNX6oDV7O+OM4z34g==}
     engines: {node: '>=0.10.0'}
 
+  is-safe-filename@0.1.1:
+    resolution: {integrity: sha512-4SrR7AdnY11LHfDKTZY1u6Ga3RuxZdl3YKWWShO5iyuG5h8QS4GD2tOb04peBJ5I7pXbR+CGBNEhTcwK+FzN3g==}
+    engines: {node: '>=20'}
+
   is-stream@2.0.1:
     resolution: {integrity: sha512-hFoiJiTl63nn+kstHGBtewWSKnQLpyb155KHheA1l39uvtO9nWIop1p3udqPcUd/xbF1VLMO4n7OI6p7RbngDg==}
     engines: {node: '>=8'}
@@ -1441,9 +1445,9 @@ packages:
     resolution: {integrity: sha512-nHc6S/bwIilKHNRgK/3jlhDoIHcp45YgyiwcAk46Tr0LfEqGBVpmiAyuiuxeVE44m3mXnEeVhaipLOEWmH+Njw==}
     engines: {node: '>=14.16'}
 
-  tempfile@5.0.0:
-    resolution: {integrity: sha512-bX655WZI/F7EoTDw9JvQURqAXiPHi8o8+yFxPF2lWYyz1aHnmMRuXWqL6YB6GmeO0o4DIYWHLgGNi/X64T+X4Q==}
-    engines: {node: '>=14.18'}
+  tempfile@6.0.1:
+    resolution: {integrity: sha512-DE4nURsf7nUqYHJKTgOVdpt0SBY5r4us4kbFXqg7KZFB7ih27NxIk3qXv29FtqTaE45stnLKTECmSc9ICuRbDQ==}
+    engines: {node: '>=20'}
 
   to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
@@ -2547,6 +2551,8 @@ snapshots:
 
   is-plain-object@3.0.1: {}
 
+  is-safe-filename@0.1.1: {}
+
   is-stream@2.0.1: {}
 
   is-stream@4.0.1: {}
@@ -2950,8 +2956,9 @@ snapshots:
 
   temp-dir@3.0.0: {}
 
-  tempfile@5.0.0:
+  tempfile@6.0.1:
     dependencies:
+      is-safe-filename: 0.1.1
       temp-dir: 3.0.0
 
   to-regex-range@5.0.1:
