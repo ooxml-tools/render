@@ -55,7 +55,7 @@
     "@ooxml-tools/file": "^0.6.5",
     "chalk": "^5.4.1",
     "execa": "^9.6.1",
-    "googleapis": "^164.1.0",
+    "googleapis": "^173.0.0",
     "open": "^11.0.0",
     "tempfile": "^5.0.0",
     "yargs": "^18.0.0"
