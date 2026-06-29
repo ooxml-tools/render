@@ -52,8 +52,8 @@ importers:
         specifier: ^17.0.32
         version: 17.0.35
       prettier:
-        specifier: 3.8.4
-        version: 3.8.4
+        specifier: 3.9.1
+        version: 3.9.1
       rollup:
         specifier: ^4.61.1
         version: 4.61.1
@@ -1346,8 +1346,8 @@ packages:
     resolution: {integrity: sha512-dM0jVuXJPsDN6DvRpea484tCUaMiXWjuCn++HGTqUWzGDjv5tZkEZldAJ/UMlqRYGFrD/etByo4/xOuC/snX2A==}
     engines: {node: '>=20'}
 
-  prettier@3.8.4:
-    resolution: {integrity: sha512-N2MylSdi48+5N/6S5j+maeHbUSIzzZ5uOcX5Hm4QpV8Dkb1HFjfAKTKX6yNPJQD9AhcT3ifHNB66tWTTJDi11Q==}
+  prettier@3.9.1:
+    resolution: {integrity: sha512-ppiDo2CSwexck1eyZUwJHg/N3nf1+6IRCv7W/VJ5vaLnVCmB7+3CdRfMwoCHBBX6xTrREDTksZ4OZl5SSf4zXA==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -1818,10 +1818,7 @@ snapshots:
     dependencies:
       '@percy/cli-command': 1.31.14(typescript@5.9.3)
     transitivePeerDependencies:
-      - bufferutil
-      - supports-color
       - typescript
-      - utf-8-validate
 
   '@percy/cli-command@1.31.14(typescript@5.9.3)':
     dependencies:
@@ -1838,10 +1835,7 @@ snapshots:
     dependencies:
       '@percy/cli-command': 1.31.14(typescript@5.9.3)
     transitivePeerDependencies:
-      - bufferutil
-      - supports-color
       - typescript
-      - utf-8-validate
 
   '@percy/cli-doctor@1.31.14(typescript@5.9.3)':
     dependencies:
@@ -1877,10 +1871,7 @@ snapshots:
       '@percy/cli-command': 1.31.14(typescript@5.9.3)
       yaml: 2.9.0
     transitivePeerDependencies:
-      - bufferutil
-      - supports-color
       - typescript
-      - utf-8-validate
 
   '@percy/cli-upload@1.31.14(typescript@5.9.3)':
     dependencies:
@@ -1888,10 +1879,7 @@ snapshots:
       fast-glob: 3.3.3
       image-size: 1.2.1
     transitivePeerDependencies:
-      - bufferutil
-      - supports-color
       - typescript
-      - utf-8-validate
 
   '@percy/cli@1.31.14(typescript@5.9.3)':
     dependencies:
@@ -2961,7 +2949,7 @@ snapshots:
 
   powershell-utils@0.1.0: {}
 
-  prettier@3.8.4: {}
+  prettier@3.9.1: {}
 
   pretty-ms@9.2.0:
     dependencies:
